@@ -1,0 +1,38 @@
+
+<HTML>
+<HEAD>
+<TITLE>AmigoCloud Embed Example</TITLE>
+</HEAD>
+<BODY>
+
+<!-- EMBED CODE GOES HERE !-->
+<script src="http://www.amigocloud.com/static/amigocloud-1.0.4/amigocloud-1.0.4.js">
+</script>
+
+<div id="map" style="width:600px;height:500px;"></div>
+
+<script>
+    var f = document.createElement("link");
+    
+    f.setAttribute("rel", "stylesheet");
+    f.setAttribute("type", "text/css");
+    f.setAttribute("href", "http://www.amigocloud.com/static/amigocloud-1.0.4/amigocloud-1.0.4.css");
+    
+    if (typeof f !== "undefined")  
+        document.head.appendChild(f);
+    
+    var map = new L.amigo.map("map",{amigoLogo: "right"});
+    
+    L.amigo.auth.setToken("R:CBcATUWksHyuE8KFWMPeHKIRS5QZMttPKqAboO");
+    map.addDatasetLayer({url: "https://www.amigocloud.com/api/v1/users/2958/projects/12680/datasets/70285", popup: {displayFields: ["name","pop"]}});
+    map.fitBounds([[19.057998686,-174.196380674],[71.290481532,173.237640399]]);
+    setTimeout(
+        function () {
+            document.querySelectorAll(".leaflet-control-layers-overlays .leaflet-control-layers-selector")[0].click();
+        }
+        , 500
+    );
+    
+</script>
+
+</BODY>
